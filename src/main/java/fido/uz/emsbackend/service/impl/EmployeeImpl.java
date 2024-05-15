@@ -1,5 +1,6 @@
 package fido.uz.emsbackend.service.impl;
 
+import fido.uz.emsbackend.dto.AddEmployeeDto;
 import fido.uz.emsbackend.dto.EmployeeDto;
 import fido.uz.emsbackend.entity.Employee;
 import fido.uz.emsbackend.exception.ResourceNotFoundException;
@@ -7,6 +8,7 @@ import fido.uz.emsbackend.mapper.EmployeeMapper;
 import fido.uz.emsbackend.repository.EmployeeRepository;
 import fido.uz.emsbackend.service.EmployeeService;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -15,6 +17,7 @@ import java.util.List;
 @Service
 @AllArgsConstructor
 public class EmployeeImpl implements EmployeeService {
+    @Autowired
     private EmployeeRepository employeeRepository;
 
     @Override
@@ -22,6 +25,18 @@ public class EmployeeImpl implements EmployeeService {
         Employee employee = EmployeeMapper.mapToEmployee(employeeDto);
         Employee savedEmployee = employeeRepository.save(employee);
         return EmployeeMapper.mapToEmployeeDto(savedEmployee);
+    }
+
+    @Override
+    public Employee addEmployee(AddEmployeeDto addEmployeeDto) {
+
+        if (addEmployeeDto.getEmail() == null || addEmployeeDto.getFirstName() == null || addEmployeeDto.getLastName() == null) {
+            throw new IllegalArgumentException("Email, first name, and last name cannot be null");
+        }
+
+        Employee employee = EmployeeMapper.mapToAddEmployee(addEmployeeDto);
+
+        return employeeRepository.save(employee);
     }
 
     @Override

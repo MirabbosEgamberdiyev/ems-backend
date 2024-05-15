@@ -1,8 +1,12 @@
 package fido.uz.emsbackend.controller;
 
+import fido.uz.emsbackend.dto.AddEmployeeDto;
 import fido.uz.emsbackend.dto.EmployeeDto;
+import fido.uz.emsbackend.entity.Employee;
 import fido.uz.emsbackend.service.EmployeeService;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,7 +18,7 @@ import java.util.List;
 @RequestMapping("/api/employees")
 public class EmployeeController {
 
-//    @Autowired
+    @Autowired
     private EmployeeService employeeService;
 
     @PostMapping("/create")
@@ -42,5 +46,10 @@ public class EmployeeController {
     public ResponseEntity<EmployeeDto> deleteEmployee(@PathVariable("id") Long employeeId){
         EmployeeDto employeeDto = employeeService.deleteEmployee(employeeId);
         return ResponseEntity.ok(employeeDto);
+    }
+    @PostMapping("/add-employee")
+    public ResponseEntity<Employee> addEmployee(@Valid @RequestBody AddEmployeeDto employeeDto) {
+        Employee employee = employeeService.addEmployee(employeeDto);
+        return ResponseEntity.ok(employee);
     }
 }
