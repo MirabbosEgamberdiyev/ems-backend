@@ -4,13 +4,13 @@ import fido.uz.emsbackend.dto.AddEmployeeDto;
 import fido.uz.emsbackend.dto.EmployeeDto;
 import fido.uz.emsbackend.entity.Employee;
 import fido.uz.emsbackend.service.EmployeeService;
-import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @AllArgsConstructor
