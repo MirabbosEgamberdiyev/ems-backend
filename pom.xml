@@ -5,8 +5,8 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.6.4</version> <!-- Update to a valid Spring Boot version -->
-		<relativePath/> <!-- lookup parent from repository -->
+		<version>2.6.4</version>
+		<relativePath/>
 	</parent>
 	<groupId>fido.uz</groupId>
 	<artifactId>ems-backend</artifactId>
@@ -62,13 +62,12 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.eclipse.transformer/org.eclipse.transformer -->
+		<!-- Eclipse Transformer -->
 		<dependency>
 			<groupId>org.eclipse.transformer</groupId>
 			<artifactId>org.eclipse.transformer</artifactId>
 			<version>0.5.0</version>
 		</dependency>
-
 	</dependencies>
 
 	<build>
@@ -95,8 +94,8 @@
 				<configuration>
 					<createDependencyReducedPom>false</createDependencyReducedPom>
 					<transformers>
-						<transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
-							<mainClass>uz.emsbackend.EmsBackendApplication</mainClass> <!-- Update with your main class -->
+						<transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+							<mainClass>fido.uz.emsbackend.EmsBackendApplication</mainClass>
 						</transformer>
 					</transformers>
 				</configuration>
