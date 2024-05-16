@@ -128,7 +128,7 @@
 					<injar>${project.build.directory}/${project.build.finalName}.jar</injar>
 					<outjar>${project.build.directory}/${project.build.finalName}-obfuscated.jar</outjar>
 					<obfuscate>true</obfuscate>
-					<proguardInclude>src/main/resources/proguard.cfg</proguardInclude>
+					<proguardInclude>proguard.cfg</proguardInclude>
 					<libs>
 						<lib>${java.home}/lib/rt.jar</lib>
 						<lib>${java.home}/lib/jce.jar</lib>
